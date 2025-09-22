@@ -16,5 +16,36 @@ Hooks manuell ausführen:
 pre-commit run --all-files   # format/lint über alle Dateien
 pytest -q                    # Tests lokal starten
 ```
+# 3) GitHub Action: PR-Tests auf **dev** (Gewicht 1 — 3-1)
+
+**Goal:** Every PR targeting `dev` runs tests, nothing else.
+
+Create file **`.github/workflows/pr-tests.yml`**:
+
+```yaml
+name: PR tests (to dev)
+
+on:
+  pull_request:
+    branches: [ "dev" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run tests
+        run: pytest -q
+```
+
+
+
 ## Aufgabe 4
 Erklären Sie hier, wie Sie das Passwort aus Ihrer lokalen `.env` auf Azure übertragen.
