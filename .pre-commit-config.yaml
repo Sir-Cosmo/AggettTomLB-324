@@ -1,0 +1,25 @@
+repos:
+  - repo: https://github.com/psf/black
+    rev: 25.9.0
+    hooks:
+      - id: black
+        language_version: python3.11
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.13.1
+    hooks:
+      - id: ruff
+        args: [--fix]
+  - repo: https://github.com/pycqa/isort
+    rev: 6.0.1
+    hooks:
+      - id: isort
+
+  # Tests laufen beim PUSH
+  - repo: local
+    hooks:
+      - id: pytest-on-push
+        name: pytest on push
+        entry: python -m pytest -q
+        language: system
+        pass_filenames: false
+        stages: [pre-push]
