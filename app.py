@@ -9,6 +9,7 @@ app.secret_key = os.urandom(24)
 
 # .env laden (PASSWORD="...")
 load_dotenv()
+app.secret_key = os.getenv("SECRET_KEY", "change-me-in-prod")
 PASSWORD = os.getenv("PASSWORD", "")
 
 @dataclass
