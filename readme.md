@@ -16,7 +16,7 @@ Hooks manuell ausführen:
 pre-commit run --all-files   # format/lint über alle Dateien
 pytest -q                    # Tests lokal starten
 ```
-# 3) GitHub Action: PR-Tests auf **dev** (Gewicht 1 — 3-1)
+
 
 **Goal:** Every PR targeting `dev` runs tests, nothing else.
 
