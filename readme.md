@@ -1,5 +1,22 @@
 # LB 324
 
+# Tagebuch-App — CI/CD (Render)
+
+**Live URL:** [https://aggetttomlb-324.onrender.com](https://aggetttomlb-324.onrender.com/)
+
+## Branch-Konzept
+- main: stets produktionsgleich; jeder Merge triggert eine Auslieferung (Render Deploy Hook)
+- dev: stabil getesteter Code; PRs von feature/* nach dev
+- feature/*: Entwicklungs-Äste pro Feature
+
+## pre-commit verwenden
+```bash
+pip install pre-commit
+pre-commit install
+pre-commit install --hook-type pre-push
+
+
+
 ## Aufgabe 2
 Erklären Sie hier, wie man `pre-commit` installiert.
 
